@@ -27,6 +27,42 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+    <div class="triangle-up" />
+    <div class="square-adjust" />
+    <div class="square-adjust-2">hello-every-one</div>
+    <div class="square-adjust-3" />
+    <div>
+      <div class="children-with-different-rules" />
+      <div class="children-with-different-rules" />
+      <div class="children-with-different-rules" />
+      <div class="children-with-different-rules" />
+      <div class="children-with-different-rules" />
+      <div class="children-with-different-rules" />
+      <div :class="['children-with-different-rules', true ? 'square-adjust-3' : '']" />
+      <!-- 阻止单击事件直接冒泡 -->
+      <a @click.stop="doThis"/>
+      <!-- 提交事件不再重载页面 -->
+      <form @submit.prevent="onSubmit"/>
+      <!-- 修饰符可以串联 -->
+      <a @click.stop.prevent="doThat" />
+      <!-- 只有修饰符 -->
+      <form @submit.prevent />
+      <!-- 添加事件监听器时使用事件捕获模式 -->
+      <!-- 即内部元素触发的事件先在此处理，然后才交由内部元素处理 -->
+      <div @click.capture="doThis" />
+
+      <!-- 只当event.target是当前元素自身时触发函数 -->
+      <!-- 即事件不是从内部元素触发 -->
+      <div @click.self="doThat"></div>
+
+      <!-- 点击事件将只会触发一次 -->
+      <a @click.once="doThis"/>
+
+      <!-- 滚动事件的默认行为（即滚动行为）将会立即触发-->
+      <!-- 而不会等待`onScroll`完成-->
+      <!-- 以防止其中包含`event.preventDefault()`的情况-->
+      <div @scroll.passive="onScroll"/>
+    </div>
   </div>
 </template>
 
@@ -40,7 +76,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
 h3 {
   margin: 40px 0 0;
 }
@@ -54,5 +90,41 @@ li {
 }
 a {
   color: #42b983;
+}
+.triangle-up {
+  width: 0;
+  height: 0;
+  border-left: solid 10px red;
+  border-top: solid 10px transparent;
+  border-bottom: solid 10px transparent;
+}
+.square-adjust {
+  background-color: rebeccapurple;
+  width: 100%;
+  height: 100vw;
+}
+.square-adjust-2 {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  background-color: red;
+}
+.square-adjust-3 {
+  width: 100%;
+  overflow: hidden;
+  background-color: green;
+  &:after { display: block; margin-top: 100%; content: '' };
+}
+.children-with-different-rules {
+  width: 20px;
+  height: 60px;
+  background-color: deeppink;
+  margin-top: 10px;
+  &:nth-child(-n + 3) {
+    margin-top: 20px;
+  }
+  &:nth-child(4) {
+    margin-top: 5px;
+  }
 }
 </style>
