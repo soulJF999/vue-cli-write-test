@@ -1,8 +1,7 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <button v-on:click="reverseMessage">反转消息</button>
+  <Test v-model:description.capitalize="myText"/>
 <!--  <HelloWorld msg="Welcome to Your Vue.js App"/>-->
-  <Test />
 </template>
 
 <script>
@@ -13,6 +12,11 @@ export default {
   name: 'App',
   components: {
     Test
+  },
+  data() {
+    return {
+      myText: ''
+    }
   }
 }
 </script>

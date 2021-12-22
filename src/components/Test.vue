@@ -1,44 +1,25 @@
 <template>
- <section>
-   <div id="a"></div>
- </section>
+  <input
+      type="text"
+      :value="description"
+      @input="emitValue">
 </template>
 
 <script>
 export default {
   name: "Test",
+  props: ['description', 'descriptionModifiers'],
+  emits: ['update:description'],
   data() {
     return {}
   },
   methods: {
-    dispatcher() {
-      class EventEmitter {
-        constructor() {
-          this._events = {}
-        }
-        on(eventName, callback) {
-          const callbacks = this._events[eventName] || []
-          callbacks.push(callback)
-          this._events[eventName] = callbacks
-        }
-        emit(eventName, ...args) {
-          const events = this._events[eventName] || []
-          events.forEach(cb => cb(...args))
-        }
-        off(eventName, callback) {
-          const callbacks = this._events[eventName] || []
-          const newCallbacks = callbacks.filter(fn => fn !== callback)
-          this._events[eventName] = newCallbacks
-        }
-      }
-      const a = new EventEmitter()
-      a.on('hi', () => console.log('123456'))
+    emitValue(e) {
+      // let value = e.target.value
+      // value = value.charAt(0).toUpperCase() + value.slice(1)
+      console.log(e.target.value, typeof e.target.value)
+      this.$emit('update:description', e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1))
     }
-  },
-  mounted() {
-    const eDiv = document.getElementById("a")
-    eDiv.classList.add("s1")
-    // eDiv.classList.add("s2")
   }
 }
 </script>
