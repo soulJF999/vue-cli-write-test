@@ -19,6 +19,11 @@ const routes = [
   {
     path: '/compileReactive',
     component: CompileReactive
+  },
+  {
+    path: '/playTransition',
+    name: 'PlayTransition',
+    component: () => import(/* webpackChunkName: "about" */ '../views/PlayTransition.vue')
   }
 ]
 

@@ -3,6 +3,7 @@
     <span>{{ count }}</span>
     <button @click="count ++">Increment count</button>
     <button @click="nested.count.value ++">Nested Increment count</button>
+    <button @click="haveFun">play some vuex + {{ count }}</button>
     <span>{{ comeHandler.books[0] }}</span>
     <span>{{ comeHandler.books[0].value }}</span>
     <CompileReactiveChild :count="count" />
@@ -11,7 +12,8 @@
 
 <script>
 import { defineComponent, ref, reactive } from "vue"
-import CompileReactiveChild from "./CompileReactiveChild";
+import CompileReactiveChild from "./CompileReactiveChild"
+// import { mapState } from 'vuex'
 
 export default defineComponent({
   components: { CompileReactiveChild },
@@ -49,6 +51,15 @@ export default defineComponent({
       },
       comeHandler
     }
+  },
+  methods: {
+    haveFun () {
+      this.$store.dispatch('incrementRootStateAndState')
+      this.$store.dispatch('increment')
+    }
+  },
+  computed: {
+    // ...mapState(['moduleA/count'])
   }
 })
 </script>

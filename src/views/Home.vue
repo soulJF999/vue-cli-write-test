@@ -12,17 +12,19 @@
         <button>789</button>
       </template>
     </slot-show>
+    <PlayTransition />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import SlotShow from "../components/SlotShow";
+import PlayTransition from "./PlayTransition";
 
 export default {
   name: 'Home',
   components: {
-    SlotShow
+    SlotShow, PlayTransition
   },
   data () {
     return {
