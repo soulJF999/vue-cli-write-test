@@ -1,8 +1,11 @@
 <template>
-  <input
-      type="text"
-      :value="description"
-      @input="emitValue">
+  <div>
+    <input
+        type="text"
+        :value="description"
+        @input="emitValue">
+    <div :class="$style.inner" />
+  </div>
 </template>
 
 <script>
@@ -24,7 +27,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="scss" module>
 .outer {
   width: 200px;
   display: flex;

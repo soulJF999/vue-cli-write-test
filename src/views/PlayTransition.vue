@@ -14,6 +14,10 @@
   </div>
 </template>
 
+<docs>
+0000
+</docs>
+
 <script>
 import TransitionGroupPlay from "../components/TransitionGroupPlay"
 import { mapState, mapGetters } from 'vuex'

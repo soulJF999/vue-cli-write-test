@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    {{ docs }} 123
     <slot-show :items="testArr">
       <template #header>
         <button>123</button>
@@ -31,7 +32,8 @@ export default {
       item: {
         name: 1
       },
-      testArr: ['爱情公寓', '圣诞节', '奇奇怪怪']
+      testArr: ['爱情公寓', '圣诞节', '奇奇怪怪'],
+      docs: PlayTransition.__docs
     }
   }
 }
