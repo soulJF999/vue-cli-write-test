@@ -27,3 +27,33 @@ setTimeout(() => {
     }
     loop()
 }, 0)
+
+setTimeout(() => {
+    const max = 10000
+    const once = 20
+    const loopCount = max / once
+
+    let countOfCurrent = 0
+    const ul = document.querySelector('ul')
+
+    function add() {
+        const fragment = document.createDocumentFragment()
+
+        for (let i = 0; i < once; i++) {
+            const li = document.createElement('li')
+            fragment.appendChild(li)
+        }
+
+        ul.appendChild(fragment)
+        countOfCurrent ++
+        loop()
+    }
+
+    function loop() {
+        if (countOfCurrent < loopCount) {
+            window.requestAnimationFrame(add)
+        }
+    }
+
+    loop()
+}, 0)

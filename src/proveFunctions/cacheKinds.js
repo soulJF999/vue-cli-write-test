@@ -12,4 +12,6 @@ let server = http.createServer((req, res) => {
     }
 })
 
+/** last-modified 与 if-modified-since */
+
 server.listen(3333)
